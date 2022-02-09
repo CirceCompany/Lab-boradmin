@@ -1,0 +1,34 @@
+<div class="container ">
+                <h3 class="my-4">Editar Producto</h3>
+                {{#each producto}}
+                <form action="/editarProducto/:{{id}}" method="post">
+                
+                <div class="bd-example  mt-5 m-5 pe-5">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Codigo</span>
+                      <input type="text" class="form-control" placeholder="Username" name="id" aria-label="Username" value="{{id}}" aria-describedby="basic-addon1" >
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Nombre</span>
+                      <input type="text" class="form-control" placeholder="Recipient's username" value="{{nombre}}" name="nombre" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Descripcion</span>
+                      <input type="text" class="form-control" placeholder="Recipient's username" value="{{descripcion}}" name="descripcion" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Precio-</span>
+                      <input type="text" class="form-control" placeholder="Recipient's username" value="{{precio}}" name="precio" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="input-group mt-3">
+                        <button class="btn btn-success">Enviar</button>    
+                    </div>
+                      
+                    </div>
+                    
+                    </form>{{/each}}
+            </div>
+            

@@ -1,0 +1,71 @@
+{{> nav}}
+        
+        <div class="contents">
+            <div class="container"> 
+
+            <form action="/newUserAdded" id="newPacient" method="post">
+                <h1 class="regPac">Registrar Usuario</h1>
+
+                <div class="tab" id="PersonalInfo">
+                    <div class="form-floating mb-2 pt-2">
+                        <input type="text" class="form-control" id="floatingInput nombre" name="EmployeeId" placeholder="name@example.com">
+                        <label for="floatingInput">Codigo de Empleado</label>
+                    </div>
+
+                    <div class="form-floating mb-2 pt-2">
+                        <input type="text" class="form-control" id="floatingInput nombre" name="nombre" placeholder="name@example.com">
+                        <label for="floatingInput">Nombre</label>
+                    </div>
+
+                    <div class="form-floating mb-2 pt-2">
+                        <input type="text" class="form-control" id="floatingInput nombre" name="apellido" placeholder="name@example.com">
+                        <label for="floatingInput">Apellido</label>
+                    </div>
+
+                   <div class="form-floating mb-2 pt-2">
+                        <input type="number" class="form-control" id="floatingInput nombre" name="cedulas" placeholder="name@example.com">
+                        <label for="floatingInput">Cedula</label>
+                    </div>
+
+                
+                </div>
+
+                <div class="tab" id="AntecedentesMedicos">
+                    <div class="form-floating mb-2 pt-2">
+                        <input type="text" class="form-control" id="floatingInput nombre" name="Username" placeholder="name@example.com">
+                        <label for="floatingInput">Usuario</label>
+                    </div>
+                    <div class="form-floating mb-2 pt-2">
+                        <input type="password" class="form-control" id="floatingInput nombre" name="Password" placeholder="name@example.com">
+                        <label for="floatingInput">Contraseña</label>
+                    </div>
+                    <div class="form-floating mb-2 pt-2">
+                        <input type="password" class="form-control" id="floatingInput nombre" name="password2" placeholder="name@example.com">
+                        <label for="floatingInput">Repita Contraseña</label>
+                    </div>
+                    <div class="form-floating mb-2 pt-2">
+                        <input type="email" class="form-control" id="floatingInput nombre" name="email" placeholder="name@example.com">
+                        <label for="floatingInput">Email</label>
+                    </div>
+                    
+                </div>
+
+
+                <div style="overflow: auto;">
+                    <div style="float: right;">
+                        <button class="btn btn-primary" id="prevBtn"  onclick="nextPrev(-1)" type="button">Anterior</button>
+                        <button class="btn btn-success" id="nextBtn"  onclick="nextPrev(1)" type="button">Siguiente</button>
+                    </div>
+                </div>
+
+                <div style="text-align:center;margin-top:40px;">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                </div>
+            </form>
+        </div>
+
+      </div>
+
+        
+        <script src="js/pagination.js"></script>

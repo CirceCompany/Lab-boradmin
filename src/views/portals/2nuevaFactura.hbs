@@ -1,0 +1,111 @@
+
+       <div class="container mt-5">
+
+               <div class=" mt-2 row fulfill">
+                    <div class="col-4 bg-secondary p-3">
+                        <div class="cliente">
+                            <h3 class="text-center mb-3">Datos del Cliente</h3>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Nombres</span>
+                                <input type="text" class="form-control" placeholder="Nombres" aria-label="Username" id="nombres" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Direccion</span>
+                                <input type="text" class="form-control" placeholder="Direccion" aria-label="Username" id="direccion" aria-describedby="basic-addon1">
+                              </div>
+
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Telefono</span>
+                                <input type="text" class="form-control" placeholder="Telefono" aria-label="Username" id="tel" aria-describedby="basic-addon1">
+                              </div>
+
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Cedula  </span>
+                                <input type="text" class="form-control" id="cedula" placeholder="Cedula" aria-label="Username" aria-describedby="basic-addon1">
+                              </div>
+
+                              
+                        </div>
+                        <div class="articulo">
+                            <h3 class="text-center mb-3">Articulos</h3>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                  <th >#</th>
+                                  <th >Nombre</th>
+                                  <th >Cant.</th>
+                                  <th>Precio </th>
+                                  <th>Agg</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                  <td class="input"><input type="text" class="form-control" id="codigo" aria-describedby="emailHelp">
+                                  </t>
+                                  <td id="nombre">Mark</td>
+                                  <td class="input"><input type="text" class="form-control" id="cantidad" aria-describedby="emailHelp">
+                                  </td>
+                                  <td id="precio">200.00</td>
+                                  <td><button class="btn btn-sm btn-success" id="add">+</button></td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="usuario">
+                          <h3 class="text-center">Usuario</h3>
+                          <h5>Username</h5>
+                        </div>
+                    </div>
+                    <div class="col-8 ">
+                        <div class="data">
+                            <h3 class="text-center">
+                                Articulos Agregados
+                            </h3>
+                            <table class="table table-striped mt-3">
+                                <thead>
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Name</th>
+                                  <th scope="col">Cantidad</th>
+                                  <th scope="col">Precio Und.</th>
+                                  <th scope="col">Precio Total</th>
+                                  <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody id="factura">
+                                
+                                </tbody>
+                              </table>
+                              <table class="table table-striped mt-3">
+                                <thead>
+                                <tr>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col">Precio Total</th>
+                                  <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody id="factura">
+                                
+                                <tr>
+                                  <th scope="row"></th>
+                                  <td>  </td>
+                                  <td></td>
+                                  <td></td>
+                                  <td id="total">000.0</td>
+                                  <td><button class="btn btn-sm btn-danger">X</button></td>
+                                </tr>
+                                </tbody>
+                              </table>
+
+                              <button class="btn btn-block btn-success" id="procesar">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <form action="/nuevaFactura" method="post" class="hide nuevaFactura">
+                </form>
+                <script src="/js/app.js"></script>

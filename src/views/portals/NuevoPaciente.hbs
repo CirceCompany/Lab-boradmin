@@ -1,0 +1,191 @@
+{{> nav}}
+
+<div class="contents">
+
+    <div class="container ps-3">
+
+        <form action="/PacientAdded" id="newPacient" method="post">
+            <h1 class="regPac">Registrar Paciente</h1>
+
+            <div class="tab" id="PersonalInfo">
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Nombre"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Nombre Completo</label>
+                </div>
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Apellido"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Apellidos</label>
+                </div>
+
+                <div class="form-floating mb-2 pt-2">
+
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Edad"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Edad</label>
+                </div>
+
+                <div class="form-floating mb-2 pt-2">
+                    <div class="input-group">
+                        <select class="input-group-text" name="Nacion">
+                            <option selected>...</option>
+                            <option value="Venezolano">V</option>
+                            <option value="Extranjero">E</option>
+                            <option value="Pasaporte">P</option>
+                            <option value="Rif Empresa">R</option>
+                            <option value="Gobierno">G</option>
+                        </select>
+                        <input type="number" class="form-control " min="1" step="1" name="Cedula" placeholder="Documento de Identidad">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab" id="AntecedentesMedicos">
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="date" class="form-control " id="floatingInput nombre" name="Fecha"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Fecha de Nacimiento</label>
+                </div>
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Sexo" list="listasexo">
+                    <label for="floatingInput">Sexo</label>
+                </div>
+
+                <datalist id="listasexo">
+                    <option value="Masculino"></option>
+                    <option value="Femenino"></option>
+                    <option value="Otro"></option>
+                </datalist>
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Sangre" list="tiposangre">
+                    <label for="floatingInput">Tipo de Sangre</label>
+                </div>
+
+                <datalist id="tiposangre">
+                    <option value="A+">
+                    <option value="A-">
+                    <option value="B+">
+                    <option value="B-">
+                    <option value="AB+">
+                    <option value="AB-">
+                    <option value="O+">
+                    <option value="O-">
+                    <option value="Desconoce">
+                </datalist>
+
+                <div class="form-floating mb-2 pt-2">
+                    <textarea type="text" class="form-control " id="floatingInput nombre" name="Patologia"
+                        rows="3"></textarea>
+                    <label for="floatingInput">Tipo de Patologia</label>
+                </div>
+
+            </div>
+
+            <div class="tab" id="AntecedentesMedicos">
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Estado"
+                        list="listaestados">
+                    <label for="floatingInput">Estado</label>
+                </div>
+                <datalist id="listaestados">
+
+                    <option value="Amazonas">
+                    <option value="Anzoátegui">
+                    <option value="Apure">
+                    <option value="Aragua">
+                    <option value="Barinas">
+                    <option value="Bolívar">
+                    <option value="Carabobo">
+                    <option value="Cojedes">
+                    <option value="Delta Amacuro">
+                    <option value="Distrito Capital">
+                    <option value="Falcón">
+                    <option value="Guárico">
+                    <option value="Lara">
+                    <option value="Mérida">
+                    <option value="Miranda">
+                    <option value="Monagas">
+                    <option value="Nueva Esparta">
+                    <option value="Portuguesa">
+                    <option value="Sucre">
+                    <option value="Táchira">
+                    <option value="Trujillo">
+                    <option value="Vargas">
+                    <option value="Yaracuy">
+                    <option value="Zulia">
+
+                </datalist>
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Municipio"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Municipio</label>
+                </div>
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="tel" class="form-control " id="floatingInput nombre" name="Telefono"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Telefono</label>
+                </div>
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Direccion"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Direccion</label>
+                </div>
+
+            </div>
+
+            <div class="tab" id="AntecedentesMedicos">
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="number" class="form-control " id="floatingInput nombre" name="Hijos">
+                    <label for="floatingInput">Cantidad de Hijos</label>
+                </div>
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Grado"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Grado de Instrucción</label>
+                </div>
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Ocupacion"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Ocupación</label>
+                </div>
+
+                <div class="form-floating mb-2 pt-2">
+                    <input type="text" class="form-control " id="floatingInput nombre" name="Civil"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Estado Civil</label>
+                </div>
+
+            </div>
+
+            <div style="overflow: auto;">
+                <div style="float: right;">
+                    <button class="btn btn-primary" id="prevBtn" onclick="nextPrev(-1)" type="button">Anterior</button>
+                    <button class="btn btn-success" id="nextBtn" onclick="nextPrev(1)" type="button">Siguiente</button>
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step "></span>
+                <span class="step "></span>
+                <span class="step "></span>
+                <span class="step "></span>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+<script src="js/pagination.js"></script>

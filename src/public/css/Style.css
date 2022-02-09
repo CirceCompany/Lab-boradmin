@@ -1,0 +1,30 @@
+body{
+}
+.main{
+    height: 100vh;
+    width: 100%;
+}
+
+.pfp{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.fulfill{
+    height: 100%;
+}
+
+.flex{
+    display: flex;
+}
+
+.small{
+    width: 60%;
+    margin: auto;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}

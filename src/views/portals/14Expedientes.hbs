@@ -1,0 +1,35 @@
+
+                
+            <div class="container-fluid">
+                <h1 class="regPac">Expedientes de Pacientes</h1>
+
+                
+                <div class="row justify-content-md-center p-5">
+                    <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+                    {{#each pacientes}}
+                    <div class="col col p-4">
+                        <div class="card " style="width: 22rem;">
+                            <div class="card-body">
+                                <h5 class="card-title px-2 py-2">{{Nombre}} {{Apellido}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{Sexo}}, {{Edad}}</h6>
+                                <p class="card-text">Examenes Realizados</p>
+                                <p class="card-text">Examenes Status</p>
+                                <a href="/Paciente/{{id}}" class="card-link">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+            </div>
+            </div>
+
+        </div>
+      
+        
+       

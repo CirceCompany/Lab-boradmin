@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/Style.css">
+    <script src="/js/bootstrap.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+  <div class="row main  row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div class="col col-lg-2 order-lg-2 col-md-3 bg-dark">
+            <div class="container logo">
+                <h3 class="text-light text-center my-4">Boradmin</h3>
+            </div>
+            <hr>
+            <div class="container user">
+                <div class="pfp mx-auto mt-5 bg-secondary">
+
+                </div>
+                <div class="userinfo mx-auto">
+                    <h4 class="text-center text-light">username</h4>
+                    <p class="text-center text-secondary">cargo</p>
+                    <button class="btn btn-sm btn-danger mx-auto">Log out</button>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+        <div class="col col-lg-10 order-lg-5 col-md-9  order-sm-first col-sm-12 bg-light">
+
+            {{>nav}}
+
+            {{{body}}}
+
+        </div>
+    
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<div class="container mt-5">
+                
+                <table class="table table-striped mt-3">
+                    <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Cedula</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Monto</th>
+                      <th scope="col">Usuario</th>
+                     
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      {{#each factura}}
+                    <tr>
+                      <th scope="row">{{id}}</th>
+                      <td>{{id_usuario}}</td>
+                      <td>{{fecha}}</td>
+                      <td>{{total}}</td>
+                      <td>{{usuario}}</td>
+                      <td><button class="btn btn-sm btn-success">editar</button> <button class="btn btn-sm btn-success mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">detalles</button><button class="btn btn-sm btn-danger">X</button></td>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>2768052</td>
+                      <td>22/05/1952</td>
+                      <td>20.10</td>
+                      <td>ADMIN</td>
+                      <td><button class="btn btn-sm btn-success">editar</button> <button class="btn btn-sm btn-success mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">detalles</button><button class="btn btn-sm btn-danger">X</button></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>10804946</td>
+                      <td>20/09/1971</td>
+                      <td>520.50</td>
+                      <td>ADMIN</td>
+                      <td><button class="btn btn-sm btn-success">editar</button> <button class="btn btn-sm btn-success mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">detalles</button><button class="btn btn-sm btn-danger">X</button></td>
+                    </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+            <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <p>This content should appear at the bottom after you scroll.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>

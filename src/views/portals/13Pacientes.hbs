@@ -1,0 +1,40 @@
+
+
+          <div class="container mt-5">
+
+              <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+              <table class="table">
+              <thead>
+                  <tr>
+                      <th scope="col"> # </th>
+                      <th scope="col"> Nombres </th>
+                      <th scope="col"> Cedula </th>
+                      <th scope="col"> Telefono </th>
+                      <th scope="col"> Direccion</th>
+                      <th scope="col"> Edad</th>
+                      <th scope="col"> Agregar Examen </th>
+                  </tr>
+              </thead>
+              {{#each paciente}}
+              <tbody class="table-striped">
+                  <tr>
+                      <th scope="row">{{id}}</th>
+                      <td>{{Nombre}}  {{Apellido}}</td>
+                      <td>{{Cedula}}</td>
+                      <td>{{Telefono}}</td>
+                      <td>{{Direccion}}</td>
+                      <td>{{Edad}}</td>
+                      <td><a href="/agregarExamen/{{id}}"><button class="btn btn-success">+</button></a></td>
+                  </tr>
+                {{/each}}  
+              </tbody>
+          </table>
+          </div>
+

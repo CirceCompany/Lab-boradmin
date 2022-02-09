@@ -1,0 +1,67 @@
+<div class="container ">
+                <h3 class="my-4">Agregar Empleado</h3>
+                {{#each empleado}}
+                <form action="/editarEmpleado/{{id}}" method="post">
+                <div class="bd-example  mt-5 m-5 pe-5">
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Codigo</span>
+                      <input type="text" name="id" value="{{id}}" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Nombres</span>
+                      <input type="text" name="nombres" value="{{nombres}}" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Cedula V-</span>
+                      <input type="text" name="cedula" value="{{cedula}}" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Direccion</span>
+                      <input type="text" name="direccion" value="{{direccion}}" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Telefono-</span>
+                      <input type="text" name="telefono" value="{{telefono}}" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon3">Fecha Nacimiento</span>
+                      <input type="date" name="fecha_nac" value="{{fecha_nac}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Fecha Ingreso</span>
+                        <input type="date" name="fecha_inicio" value="{{fecha_inicio}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Fecha Egreso</span>
+                        <input type="date" name="fecha_egreso" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      </div>
+
+                    <label for="">Datos del Cargo</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Salario Base Bs.</span>
+                      <input type="text" name="salario" value="{{salario}}" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <span class="input-group-text">.00</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Nombre del Cargo</span>
+                        <input type="text" class="form-control"  placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Departamento</span>
+                        <input type="text" name="departamento" value="{{departamento}}" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                    <div class="input-group mt-3">
+                        <button class="btn btn-success" type="submit">Enviar</button>    
+                    </div>
+                      
+                    </div>
+                    </form>
+                    {{/each}}
+            </div>
+
+          
