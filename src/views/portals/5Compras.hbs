@@ -4,27 +4,30 @@
                     <div class="col-4 bg-secondary p-3">
                         <div class="cliente">
                             <h3 class="text-center mb-3">Datos del Proveedor</h3>
+                            <div class="nuevoProveedor">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Nombres</span>
-                                <input type="text" class="form-control" placeholder="Nombres" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="nombres" class="form-control" name="nombre" placeholder="Nombres" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Direccion</span>
-                                <input type="text" class="form-control" placeholder="Direccion" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="" class="form-control" name="direccion" placeholder="Direccion" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Telefono</span>
-                                <input type="text" class="form-control" placeholder="Telefono" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" name="telefono" placeholder="Telefono" aria-label="Username" aria-describedby="basic-addon1">
                               </div>
 
                               <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Cedula  </span>
-                                <input type="text" class="form-control" placeholder="Cedula" aria-label="Username" aria-describedby="basic-addon1">
+                                <span class="input-group-text" id="basic-addon1">Rif</span>
+                                <input type="text" class="form-control" name="rif" placeholder="Cedula" aria-label="Username" aria-describedby="basic-addon1">
+                              </div>
                               </div>
 
-                              <button class="btn btn-block btn-dark">Enviar</button>
+
+                              
                         </div>
                         <div class="articulo">
                             <h3 class="text-center mb-3">Articulos</h3>
@@ -40,13 +43,13 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                  <td class="input">            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  <td class="input"><input type="email" class="form-control" id="codigo" aria-describedby="emailHelp">
                                   </th>
-                                  <td>Mark</td>
-                                  <td class="input">            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  <td id="nombre">Mark</td>
+                                  <td class="input"><input type="email" class="form-control" id="cantidad" aria-describedby="emailHelp">
                                   </td>
-                                  <td>@mdo</td>
-                                  <td><button class="btn btn-sm btn-success">+</button></td>
+                                  <td id="precio"></td>
+                                  <td><button class="btn btn-sm btn-success add" id="add">+</button></td>
                                 </tr>
                             </tbody>
                             </table>
@@ -73,35 +76,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td>Mark</td>
-                                  <td>2</td>
-                                  <td>100.00</td>
-                                  <td>200.00</td>
-                                  <td><button class="btn btn-sm btn-danger">X</button></td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Jacob</td>
-                                  <td>4</td>
-                                  <td>20.10</td>
-                                  <td>80.40</td>
-                                  <td><button class="btn btn-sm btn-danger">X</button></td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Larry the Bird</td>
-                                  <td>1</td>
-                                  <td>520.50</td>
-                                  <td>520.50</td>
-                                  <td><button class="btn btn-sm btn-danger">X</button></td>
-                                </tr>
+                                
                                 </tbody>
                               </table>
 
-                              <button class="btn btn-block btn-success">Enviar</button>
+                              <button class="btn btn-block btn-success" id="procesar">Enviar</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <form action="/comprar" method="post" class=" hide nuevaFactura"></form>
+            <script src="/js/compras.js"></script>

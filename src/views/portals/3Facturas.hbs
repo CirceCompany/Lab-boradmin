@@ -14,37 +14,22 @@
                     </tr>
                     </thead>
                     <tbody>
-                      {{#each factura}}
+                      {{#each facturas}}
                     <tr>
                       <th scope="row">{{id}}</th>
                       <td>{{id_usuario}}</td>
                       <td>{{fecha}}</td>
                       <td>{{total}}</td>
                       <td>{{usuario}}</td>
-                      <td><button class="btn btn-sm btn-success">editar</button> <button class="btn btn-sm btn-success mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">detalles</button><button class="btn btn-sm btn-danger">X</button></td>
+                      <td> <button class="btn btn-sm btn-success mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">detalles</button><button class="btn btn-sm btn-danger">X</button></td>
                     </tr>
                     {{/each}}
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>2768052</td>
-                      <td>22/05/1952</td>
-                      <td>20.10</td>
-                      <td>ADMIN</td>
-                      <td><button class="btn btn-sm btn-success">editar</button> <button class="btn btn-sm btn-success mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">detalles</button><button class="btn btn-sm btn-danger">X</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>10804946</td>
-                      <td>20/09/1971</td>
-                      <td>520.50</td>
-                      <td>ADMIN</td>
-                      <td><button class="btn btn-sm btn-success">editar</button> <button class="btn btn-sm btn-success mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">detalles</button><button class="btn btn-sm btn-danger">X</button></td>
-                    </tr>
+                   
                     </tbody>
                   </table>
             </div>
 
-            <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">

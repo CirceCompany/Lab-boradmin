@@ -19,19 +19,19 @@
                       <th scope="col"> Telefono </th>
                       <th scope="col"> Direccion</th>
                       <th scope="col"> Edad</th>
-                      <th scope="col"> Agregar Examen </th>
+                      <th scope="col"> </th>
                   </tr>
               </thead>
-              {{#each paciente}}
+              {{#each clientes}}
               <tbody class="table-striped">
                   <tr>
                       <th scope="row">{{id}}</th>
-                      <td>{{Nombre}}  {{Apellido}}</td>
-                      <td>{{Cedula}}</td>
-                      <td>{{Telefono}}</td>
-                      <td>{{Direccion}}</td>
-                      <td>{{Edad}}</td>
-                      <td><a href="/agregarExamen/{{id}}"><button class="btn btn-success">+</button></a></td>
+                      <td>{{nombres}}</td>
+                      <td>{{cedula}}</td>
+                      <td>{{telefono}}</td>
+                      <td>{{direccion}}</td>
+                      <td>{{edad}}</td>
+                      <td><a href="/resultados/{{id}}"><button class="btn btn-success">Ver Resultados</button></a></td>
                   </tr>
                 {{/each}}  
               </tbody>

@@ -50,7 +50,7 @@ CREATE TABLE `empleados`(
 );
 
 CREATE TABLE `gastos`(
-    `id` varchar(15)PRIMARY KEY NOT NULL,
+    `id` int(15)PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `presupuesto_id` varchar(15) NOT NULL,
     `monto` float(12) NOT NULL,
     `fecha` date NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `gastos`(
 );
 
 CREATE TABLE `presupuestos`(
-    `id` varchar(15)PRIMARY KEY NOT NULL,
+    `id` int(15)PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `nombre` varchar(20) NOT NULL,
     `monto_total` float(15) NOT NULL,
     `monto_actual` float(15) NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE `presupuestos`(
 );
 
 CREATE TABLE `caja`(
-    `id` varchar(15)PRIMARY KEY NOT NULL,
+    `id` int(15)PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `fecha` date NOT NULL,
     `monto` float(20) NOT NULL,
    `usuario` varchar(20) NOT NULL
@@ -81,7 +81,14 @@ CREATE TABLE `clientes`(
     `nombres` varchar(20) NOT NULL,
     `cedula` int(12) NOT NULL,
     `telefono` varchar(20) NOT NULL,
-    `direccion` varchar(7) NOT NULL,
+    `direccion` varchar(70) NOT NULL,
     `edad` int(3) NOT NULL
 );
 
+CREATE TABLE `tests`(
+    `id` int(15) PRIMARY KEY AUTO_INCREMENT,
+    `nombres` varchar(20) NOT NULL,
+    `precio` float(12) NOT NULL,
+    `descripcion` varchar(20) NOT NULL,
+    `detalles` longtext
+);

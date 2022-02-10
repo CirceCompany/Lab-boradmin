@@ -10,12 +10,15 @@ router.get('/', (req, res) =>{
 router.get('/nuevaVenta', (req, res) =>{
     res.render('portals/2nuevaFactura');
 })
-
 router.get('/Factura', async(req, res) =>{
     let facturas = await pool.query('SELECT * FROM FACTURAS')
+    facturas.forEach(factura => {
+        let fecha = new Date(factura.fecha)
+        factura.fecha = `${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`
+
+    });
     res.render('portals/3Facturas', {facturas});
 })
-
 router.post('/factura', async(req,res)=>{
     let newFacturaDetalle = {
         id_factura: req.body.id_factura,
@@ -25,12 +28,11 @@ router.post('/factura', async(req,res)=>{
 
     newFacturaDetalle.cantidad = parseInt(newFacturaDetalle.cantidad)
     try{
-        await pool.query('INSERT INTO factura_detalles SET = ?', newFacturaDetalle)
+        await pool.query('INSERT INTO factura_detalles SET  ?', newFacturaDetalle)
     } catch(error){
         console.log(error)
     }
 })
-
 router.post('/nuevaFactura', async(req,res)=>{
     let newFactura = {
         fecha: req.body.fecha,
@@ -38,6 +40,8 @@ router.post('/nuevaFactura', async(req,res)=>{
         id_usuario: req.body.cedula,
         usuario: req.body.usuario
     }
+    let caja;
+
     newFactura.total = parseFloat(newFactura.total)
     newFactura.id_usuario = parseInt(newFactura.id_usuario)
 
@@ -51,42 +55,69 @@ router.post('/nuevaFactura', async(req,res)=>{
     newCliente.cedula = parseInt(newCliente.cedula)
 
     try{
-        await pool.query('INSERT INTO facturas SET = ?', newFactura)
+        await pool.query('INSERT INTO facturas SET ?', newFactura)
     } catch(error){
         console.log(error)
     }
-
-    
     try{
-        await pool.query('INSERT INTO clientes SET = ?', newCliente)
+        await pool.query('INSERT INTO clientes SET  ?', newCliente)
     } catch(error){
         console.log(error)
     }
+    try{
+        caja = await pool.query('SELECT * FROM caja  ORDER BY id DESC LIMIT 1')
+    } catch(error){
+        console.log(error)
+    }
+    let id = caja[0].id
+    let montoActual = caja[0].monto
+    montoActual = parseFloat(montoActual)
+    montoActual = montoActual + newFactura.total
+
+    try{
+        await pool.query(`UPDATE caja SET monto = ${montoActual} WHERE id = ${id}`)
+    } catch(error){
+        console.log(error)
+    }
+
+    res.redirect('/Factura')
+})
+router.get('/test/:code', async(req,res)=>{
+    let {code} = req.params
+    let producto = await pool.query(`SELECT * FROM tests WHERE id LIKE ?`,code);
+    res.send(producto)
 })
 
-
-
-router.get('/Caja', (req, res) =>{
-    res.render('portals/4Caja');
+/*Caja*/
+router.get('/Caja', async(req, res) =>{
+    let caja = await pool.query('SELECT monto FROM caja ORDER BY id DESC LIMIT 1')
+    res.render('portals/4Caja', {caja});
 })
+router.post('/addCaja', async(req,res)=>{
+    let newFondo = {
+        monto : req.body.monto
+    }
+    newFondo.monto = parseFloat(newFondo.monto)
+    let date = new Date()
+    newFondo.fecha = `${date.getFullYear()}-0${date.getMonth()+1}-${date.getDate()}`
+    newFondo.usuario = 'ADMIN'
 
+    try{
+        await pool.query(`INSERT INTO caja SET ?`, newFondo)
+    }catch(error){
+        console.log(error)
+    }
+    res.redirect('/Caja')
+})
 router.get('/Compras', (req, res) =>{
     res.render('portals/5Compras');
 })
-
-
-
-router.get('/Gastos', (req, res) =>{
-    res.render('portals/7Gastos');
-})
-
 router.get('/Inventario', (req, res) =>{
     res.render('portals/8Inventario');
 })
 
-router.get('/Nomina', (req, res) =>{
-    res.render('portals/9Nomina');
-})
+
+
 
 /*presupuestos*/
 router.get('/Presupuestos', async(req, res) =>{
@@ -131,7 +162,6 @@ router.post('/addPresupuesto', async(req, res)=>{
 router.post('/addGasto/:id', async(req, res)=>{
     let {id} =req.params
     let newGasto = {
-        id: req.body.id,
         presupuesto_id : id,
         monto: req.body.monto,
         fecha: new Date(),
@@ -160,6 +190,22 @@ router.post('/addGasto/:id', async(req, res)=>{
         console.log(error)
     }
 
+    try{
+        caja = await pool.query('SELECT * FROM caja  ORDER BY id DESC LIMIT 1')
+    } catch(error){
+        console.log(error)
+    }
+    let idP = caja[0].id
+    let montoActual = caja[0].monto
+    montoActual = parseFloat(montoActual)
+    montoActual = montoActual - monto
+
+    try{
+        await pool.query(`UPDATE caja SET monto = ${montoActual} WHERE id = ${idP}`)
+    } catch(error){
+        console.log(error)
+    }
+
 
     res.redirect('/Presupuestos')
 })
@@ -170,22 +216,40 @@ router.get('/expenses/:id', async(req, res) =>{
 })
 
 
-
-router.get('/AddTests', (req, res) =>{
+/*Tests*/
+router.get('/AddTests', async(req, res) =>{
     res.render('portals/12AddTest');
 })
+router.get('/producto/:code', async(req,res)=>{
+    let {code} = req.params
+    let producto = await pool.query(`SELECT * FROM productos WHERE id LIKE ?`,code);
+    res.send(producto)
+})
+router.post('/addTest', async(req,res)=>{
+    let newTest = {
+        nombres: req.body.nombre,
+        descripcion: req.body.descripcion,
+        precio: req.body.precio,
+        detalles: req.body.detalles
+    }
 
+    try{
+        await pool.query('INSERT INTO tests SET ?', newTest)
+    } catch(error){
+        console.log(error)
+    }
+    res.redirect('/')
+})
 
 
 /*pacientes*/
-router.get('/Pacientes', (req, res) =>{
-    res.render('portals/13Pacientes');
+router.get('/Pacientes', async(req, res) =>{
+    let clientes = await pool.query('SELECT * FROM clientes')
+    res.render('portals/13Pacientes', {clientes});
 })
-
 router.get('/Expedientes', (req, res) =>{
     res.render('portals/14Expedientes');
 })
-
 router.get('/NuevoPaciente', (req, res) =>{
     res.render('portals/NuevoPaciente');
 })
@@ -328,176 +392,9 @@ router.get('/delEmpleado/:id',async(req, res) =>{
      let producto = await pool.query(`DELETE FROM empleados WHERE id = ?`, id);
      res.redirect('/Empleados')
  })
-
-
-
-
-// /***Pacientes */
-// router.get('/Pacientes', (req, res) =>{
-//     res.render('portals/Pacientes');
-// })
-
-// router.get('/NuevoPaciente', (req, res) =>{
-//     res.render('portals/NuevoPaciente');
-// })
-
-// router.get('/agregarExamen/:id', async (req, res) =>{
-//     let {id} = req.params; 
-//     try{
-//        paciente =  await pool.query(`SELECT * FROM paciente WHERE Id = ?`, id);
-//     } catch (error){
-//         console.log('factura no creada')
-//     }
-//     let test;
-//     try{
-//         test = await pool.query('SELECT * FROM muestras')
-//     } catch(error){
-//         console.log('nope');
-//     }
-    
-//     res.render('portals/AgregarExamen', {test, paciente})
-// })
-
-// router.get('/BuscarPaciente', async (req, res) =>{
-//     const paciente = await pool.query('SELECT id, Nombre, Apellido , Cedula, Telefono, Direccion, Edad, Sangre, Fecha, Sexo, Patologia, Nacion, Municipio, Estado, Hijos, Civil, Ocupacion, Grado FROM paciente')
-//     res.render('portals/BuscarPaciente', {paciente});
-// })
-
-// router.post('/PacientAdded', async(req, res) =>{
-//     const newPacient = {
-//         Nombre : req.body.Nombre,
-//         Apellido : req.body.Apellido,
-//         Cedula : req.body.Cedula,
-//         Edad : req.body.Edad,
-//         Fecha: req.body.Fecha,
-//         Sexo : req.body.Sexo,
-//         Sangre : req.body.Sangre,
-//         Patologia : req.body.Patologia,
-//         Estado: req.body.Estado,
-//         Municipio: req.body.Municipio,
-//         Hijos : req.body.Hijos,
-//         Grado : req.body.Grado,
-//         Nacion : req.body.Nacion,
-//         Ocupacion : req.body.Ocupacion,
-//         Civil : req.body.Civil,
-//         Telefono : req.body.Telefono,
-//         Direccion : req.body.Direccion
-//     }
-//     await pool.query('INSERT INTO paciente SET ? ', newPacient)
-//     res.render('portals/PacientAdded');
-// })
-
-// router.post('/factura/:id', async(req, res) =>{
-   
-//         let id = req.body.id
-//         let cost = req.body.cost        
-
-//         console.log(id)
-//         console.log(cost)
-//     await pool.query(`INSERT INTO facturas(Cost, id) VALUES('${id}', '${cost}')`)
-//     res.render('portals/Factura')
-// })
-
-// router.get('/Paciente/:id', async (req, res) =>{
-//     let {id} = req.params;
-//     console.log(id)
-//     paciente =  await pool.query(`SELECT * FROM paciente WHERE Id = ?`, id);
-//     res.render('portals/Paciente', {paciente});
-// })
- 
-// router.get('/agregarExamen', (req, res) =>{
-//     res.render('portals/AgregarExamen');
-// })
-
-// router.get('/Expedientes', async(req, res) =>{
-//     const pacientes = await pool.query('SELECT * FROM paciente')
-//     res.render('portals/Expedientes', {pacientes});
-// })
-
-
-// /*** Reportes ***/
-
-// router.get('/ControlResultados', (req, res) => {
-//     res.render('portals/ControlResultados');
-// })
-
-// router.get('/Interfaces', (req, res) =>{
-//     res.render('portals/Interfaces');
-// })
-
-// router.get('/GeneralFacturas', (req, res) =>{
-//     res.render('portals/GeneralFacturas');
-// })
-
-// router.get('/FacturasReciente', async(req, res) =>{
-//     const factura = await pool.query('SELECT * FROM facturas INNER JOIN paciente ON facturas.id = paciente.id')
-//     res.render('portals/FacturasReciente', {factura});
-// })
-
-// router.get('/Configuraciones', (req, res) =>{
-//     res.render('portals/Configuraciones');
-// })
-
-// /** Usuario Doctores */
-
-// router.get('/Usuario', (req, res) =>{
-//     res.render('portals/Usuario');
-// })
-
-// router.get('/AddTest', (req, res) =>{
-//     res.render('portals/AddTest');
-// })
-
-// router.post('/AddTest', async(req, res) =>{
-//     const newTest = {
-//         testName : req.body.testName,
-//         cost : req.body.cost
-//     }
-//     await pool.query('INSERT INTO muestras SET ?', newTest)
-//     res.redirect('/Index');
-// })
-
-// /** Administrador */
-
-// router.get('/Indexadmin', (req, res) =>{
-//     res.render('admin/Index');
-// })
-
-// router.get('/Configuracionesadmin', (req, res) =>{
-//     res.render('admin/Configuraciones');
-// })
-
-// router.get('/Permisosadmin', (req, res) =>{
-//     res.render('admin/Permisos');
-// })
-
-// router.get('/Interfacessadmin', (req, res) =>{
-//     res.render('admin/Interfaces');
-// })
-
-// router.get('/Usuarios', (req, res) =>{
-//     res.render('admin/Usuarios');
-// })
-
-// router.get('/Logusuario', (req, res) =>{
-//     res.render('admin/Logusuario');
-// })
-
-// router.get('/Pagosadmin', (req, res) =>{
-//     res.render('admin/Pagosadmin');
-// })
-
-// router.get('/Adminuser', (req, res) =>{
-//     res.render('admin/Adminuser');
-// })
-
-// router.get('/Inventario', (req, res) =>{
-//     res.render('admin/Inventario');
-// })
-
-// router.get('/Empleados', (req, res) =>{
-//     res.render('admin/Empleados');
-// })
+router.get('/Nomina', (req, res) =>{
+    res.render('portals/9Nomina');
+})
 
 
 module.exports = router;
