@@ -1,0 +1,40 @@
+
+
+          <div class="container mt-5">
+
+              <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+              <table class="table">
+              <thead>
+                  <tr>
+                      <th scope="col"> # </th>
+                      <th scope="col"> Nombres </th>
+                      <th scope="col"> Cedula </th>
+                      <th scope="col"> Telefono </th>
+                      <th scope="col"> Direccion</th>
+                      <th scope="col"> Edad</th>
+                      <th scope="col"> </th>
+                  </tr>
+              </thead>
+              {{#each clientes}}
+              <tbody class="table-striped">
+                  <tr>
+                      <th scope="row">{{id}}</th>
+                      <td>{{nombres}}</td>
+                      <td>{{cedula}}</td>
+                      <td>{{telefono}}</td>
+                      <td>{{direccion}}</td>
+                      <td>{{edad}}</td>
+                      <td><a href="/resultados/{{id}}"><button class="btn btn-success">Ver Resultados</button></a></td>
+                  </tr>
+                {{/each}}  
+              </tbody>
+          </table>
+          </div>
+

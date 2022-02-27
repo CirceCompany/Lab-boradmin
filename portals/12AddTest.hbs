@@ -1,0 +1,48 @@
+<div class="container ">
+                <h3 class="my-4">Agregar Examen</h3>
+                <form action="/addTest" method="post" id="form">
+                <div class="bd-example  mt-5 m-5 pe-5">
+                   
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Nombre</span>
+                      <input type="text"  class="form-control" placeholder="Recipient's username" name="nombre" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Descripcion</span>
+                      <input type="text" class="form-control" placeholder="Recipient's username" name="descripcion" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">Precio</span>
+                      <input type="text" class="form-control" placeholder="Recipient's username" name="precio" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text" id="basic-addon2">Precio</span>
+                        <textarea name="detalles" id="details" class="invisible" cols="30" rows="10"></textarea>                    
+                        </div>
+                    <label for="">Elementos Necesarios</label>
+                    <table class="table table-stripped table-hoverable">
+                        <thead>
+                            <th>Codigo de Producto</th>
+                            <th>Nombre de Producto</th>
+                            <th>Cantidad</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="tbody">
+                            <tr>
+                                <td><input type="number" class="form-control" id="codigo" aria-describedby="emailHelp"></td>
+                                <td id="nombre">-</td>
+                                <td><input type="text" class="form-control" id="cantidad" aria-describedby="emailHelp"></td>
+                                <td><button type="button" class="btn btn-success add">Agregar</button></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                        <button class="btn btn-success send" type="submit">Enviar</button>    
+                    </div>
+                    </form>
+            </div>
+            <script src="/js/addTest.js"></script>
+            

@@ -1,0 +1,163 @@
+<div class="container">
+                <div class="flex mt-4">
+                    <div class="buttons">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addmotivo">Agregar Motivo</button>
+                        
+                    </div>
+                </div>
+                <div class="presupuestos row row-cols-1 row-cols-md-2 row-cols-lg-3 mx-auto">
+
+                     {{#each presupuestos}}
+                        <div class="col card m-2 mt-5">
+                        <div class="card-header">
+                          {{id}}
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-title">{{nombre}}</h5>
+                          <div class="progress mb-3">
+                            <div class="progress-bar bg-success bg-{{status}} w-{{width}}" role="progressbar" aria-valuenow="{{monto_actual}}" aria-valuemin="0" aria-valuemax="{{monto_total}}"></div>
+                          </div>
+                          <a href="#" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#addexpense-{{id}}">Agregar Gasto</a>
+                          <a href="#" class="btn btn-outline-primary showExpenses" id="{{id}}"  data-bs-toggle="modal" data-bs-target="#seeexpenses-{{id}}">Ver Gastos</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                          2 days ago
+                        </div>
+                      </div>
+                    {{/each}}
+
+            
+                </div>
+            </div>
+
+
+{{#each presupuestos}}
+    <div class="modal fade" id="addexpense-{{id}}" tabindex="-1" aria-labelledby="addexpense" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Agregar Gasto
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/addGasto/{{id}}" method="post">
+            <div class="bd-example  mt-5 m-5 pe-5">
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Motivo  </span>
+                <input type="text" class="form-control" name="nombre" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              
+              {{id}}
+              <div class="input-group mb-3">
+                <span class="input-group-text">Monto Bs.</span>
+                <input type="text" name="monto" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">.00</span>
+              </div>
+              
+              <div class="input-group">
+                <span class="input-group-text">Detalles</span>
+                <textarea class="form-control" name="detalles" aria-label="With textarea"></textarea>
+              </div>
+              <div class="input-group mt-3">
+                  <button class="btn btn-success" type="submit">Enviar</button>    
+              </div>
+                
+              </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade seeExpense" id="seeexpenses-{{id}}" tabindex="-1" aria-labelledby="seeexpenses" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Agregar Gasto
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped mt-3">
+              <thead>
+              <tr>
+                <th scope="col">{{id}}</th>
+  
+                <th scope="col">Monto</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Usuario</th>
+                
+                
+                <th scope="col"></th>
+              </tr>
+              </thead>
+              <tbody class="tbody" id="table-{{id}}">
+              
+                
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/each}}
+
+    <div class="modal fade" id="addmotivo" tabindex="-1" aria-labelledby="addmotivo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Agregar Motivo
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/addPresupuesto" method="post">
+            <div class="bd-example  mt-5 m-5 pe-5">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Id  </span>
+                <input type="text" class="form-control" name="id" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Motivo  </span>
+                <input type="text" class="form-control" name="nombre" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text">Monto Objetivo Bs.</span>
+                <input type="text" class="form-control" name="monto_total" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">.00</span>
+              </div>
+              
+              <div class="input-group">
+                <span class="input-group-text">Detalles</span>
+                <textarea class="form-control" name="detalles" aria-label="With textarea"></textarea>
+              </div>
+              <div class="input-group mt-3">
+                  <button class="btn btn-success" type="submit">Enviar</button>    
+              </div>
+                </form>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/presupuesto.js"></script>
